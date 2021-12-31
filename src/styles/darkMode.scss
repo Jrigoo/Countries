@@ -3,6 +3,7 @@
 $DarkBlue: hsl(209, 23%, 22%); /* (Dark Mode Elements) */
 $VeryDarkBlue: hsl(207, 26%, 17%); /* (Dark Mode Background) */
 $LightShadow: hsl(208, 23%, 16%);
+$textHover: hsl(209, 23%, 24%);
 
 .darkMode {
   background-color: $VeryDarkBlue;
@@ -41,12 +42,18 @@ $LightShadow: hsl(208, 23%, 16%);
     button {
       color: $White;
     }
+    .region-btn:hover {
+      background-color: $textHover;
+    }
   }
 
   .card {
     color: $White;
     background-color: $DarkBlue;
     box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+    &__img {
+      border-bottom: 1px solid $LightShadow;
+    }
   }
   .detail {
     color: $White;
@@ -55,12 +62,18 @@ $LightShadow: hsl(208, 23%, 16%);
       background-color: $DarkBlue;
       box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
     }
+    #back:hover {
+      background-color: $textHover;
+    }
     .country {
       &__borders {
         button {
           color: $White;
           background-color: $DarkBlue;
           box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+        }
+        button:hover {
+          background-color: $textHover;
         }
       }
     }

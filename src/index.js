@@ -6,6 +6,7 @@ import { getAllData } from "./utils/getAllData";
 import "./styles/global.scss";
 import "./styles/lightMode.scss";
 import "./styles/darkMode.scss";
+import "./styles/media.scss";
 
 class Initialize {
   constructor(countries) {
@@ -18,12 +19,12 @@ class Initialize {
     this.header = document.getElementById("header");
 
     this.listeners();
+    this.darkModeListener();
   }
   listeners() {
     this.searchListener();
     this.cardListener();
     this.regionListener();
-    this.darkModeListener();
   }
   darkModeListener() {
     this.darkModeBtn.addEventListener("click", () => {
@@ -49,6 +50,7 @@ class Initialize {
         this.app.innerHTML = displayCountries(
           filterCountries(this.countries, { region: btn.innerHTML })
         );
+        this.cardListener();
       });
     });
   }
@@ -68,7 +70,7 @@ class Initialize {
   }
   backBtnListener() {
     document.getElementById("back").addEventListener("click", () => {
-      header.style.display = "block";
+      header.style.display = "flex";
       this.app.innerHTML = displayCountries(this.countries);
       this.listeners();
     });
@@ -88,5 +90,11 @@ class Initialize {
 }
 
 window.onload = async () => {
-  new Initialize(await getAllData());
+  if (!localStorage.getItem("Countries")) {
+    const data = await getAllData();
+    localStorage.setItem("Countries", JSON.stringify(data));
+    new Initialize(data);
+  } else {
+    new Initialize(JSON.parse(localStorage.getItem("Countries")));
+  }
 };

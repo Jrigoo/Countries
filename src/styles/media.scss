@@ -1,16 +1,131 @@
-$breakpoints: (
-  phone: 640px,
-  tablet: 768px,
-  desktop: 1024px,
-) !default;
+@media (min-width: 540px) {
+  .nav {
+    padding: 20px 5rem;
+  }
+  .header {
+    padding: 0px 5rem;
 
-/* 
-@media (min-width: 640px) and (max-width: 767px) {}
-@media (min-width: 768px) and (max-width: 950px) {}
-*/
+    .searchbox {
+      width: 71%;
+    }
+    .dropdown {
+      width: 30%;
+    }
+  }
+  #app {
+    justify-content: space-between;
+    padding: 0px 5rem;
 
-@include media(">phone", "<tablet") {
+    .card {
+      width: 43%;
+      &__img {
+        height: 190px;
+        object-fit: cover;
+      }
+    }
+  }
 }
 
-@include media(">tablet", "<950px") {
+@media (min-width: 660px) {
+  .detail {
+    .country {
+      display: grid;
+      grid-template-areas:
+        "a b b"
+        "a c d"
+        "a e e";
+      gap: 0px 20px;
+      img {
+        margin: 0;
+        grid-area: a;
+        width: 40vw;
+        align-self: center;
+        object-fit: cover;
+      }
+
+      h3 {
+        width: 100%;
+        grid-area: b;
+        align-self: center;
+        margin-bottom: 10px;
+      }
+      :nth-child(3) {
+        grid-area: c;
+        width: 20vw;
+        height: fit-content;
+      }
+      :nth-child(4) {
+        grid-area: d;
+        width: 20vw;
+        height: fit-content;
+      }
+
+      &__borders {
+        grid-area: e;
+
+        align-items: center;
+        button {
+          height: unset;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 860px) {
+  * {
+    font-size: 65%;
+  }
+  .header {
+    padding: 0px 5rem;
+    justify-content: space-between;
+
+    .searchbox {
+      width: 40%;
+    }
+    .dropdown {
+      width: 20%;
+      margin: 0;
+    }
+  }
+  #app {
+    .card {
+      width: 30%;
+    }
+  }
+
+  .detail {
+    img {
+      align-self: flex-start;
+      height: 90%;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  * {
+    font-size: 70%;
+  }
+
+  #app {
+    .card {
+      width: 22%;
+    }
+  }
+  .detail {
+    #back {
+      margin: 40px 0px 60px 0px;
+    }
+    img {
+      height: 100%;
+    }
+    .country {
+      gap: 0px 80px;
+      img {
+        width: 35vw;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { getDetailData } from "../utils/getDetailData";
-import { sufix } from "../utils/Sample";
+import { sufix } from "../utils/Sufix";
 
 const Detail = async (query) => {
   const {
@@ -31,9 +31,8 @@ const Detail = async (query) => {
       <button id="back"><i class="fas fa-arrow-left"></i> Back</button>
       <div class="country">
         <img src="${Flag}" alt="${Name} Flag" />
-
+        <h3 class="country__name">${Name}</h3>
         <div class="country__desc">
-          <h3>${Name}</h3>
             <div class="country__desc--item">
               <h5>Native Name:</h5>
               <h5>${NativeName}</h5>

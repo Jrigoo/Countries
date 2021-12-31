@@ -5,7 +5,7 @@ $VeryDarkBlue: hsl(200, 15%, 8%); /* (Light Mode Text) */
 $DarkGray: hsl(0, 0%, 52%); /* (Light Mode Input) */
 $LightGray: hsl(0, 0%, 75%);
 $LightShadow: hsl(0, 0%, 85%);
-
+$textHover: hsl(0, 0%, 95%);
 .lightMode {
   background-color: $VeryLightGray;
   .nav {
@@ -43,12 +43,19 @@ $LightShadow: hsl(0, 0%, 85%);
     button {
       color: $VeryDarkBlue;
     }
+    .region-btn:hover {
+      background-color: $textHover;
+    }
   }
 
   .card {
     color: $VeryDarkBlue;
     background-color: $White;
     box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+
+    &__img {
+      border-bottom: 1px solid $LightShadow;
+    }
   }
 
   .detail {
@@ -58,12 +65,18 @@ $LightShadow: hsl(0, 0%, 85%);
       background-color: $White;
       box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
     }
+    #back:hover {
+      background-color: $textHover;
+    }
     .country {
       &__borders {
         button {
           color: $VeryDarkBlue;
           background-color: $White;
           box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+        }
+        button:hover {
+          background-color: $textHover;
         }
       }
     }

@@ -9,7 +9,7 @@ The designs were created to the following widths:
 ### Body Copy
 
 - Homepage Items: 14px
-- Detail Page: 16px 
+- Detail Page: $titles 
 
 ### Fonts
 
@@ -21,15 +21,19 @@ The designs were created to the following widths:
 /* @import "lightMode";
 @import "darkMode"; */
 
-$White: hsl(0, 0%, 100%); /* (Dark Mode Text & Light Mode Elements) */
-$radius: 5px;
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Nunito Sans", sans-serif;
+  font-size: 62.5%;
 }
+
+$White: hsl(0, 0%, 100%); /* (Dark Mode Text & Light Mode Elements) */
+$radius: 5px;
+$titles: 1.6rem;
+$content: 1.4rem;
+$pdCorners: 20px;
 
 #main {
   width: 100%;
@@ -40,18 +44,18 @@ $radius: 5px;
 .nav {
   width: 100%;
   height: fit-content;
-  padding: 20px;
-  font-size: 14px;
+  padding: $pdCorners;
 
   ul {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
+    align-items: center;
+
+    font-size: $content;
 
     li {
       list-style: none;
-      padding: 0px 10px;
     }
 
     button {
@@ -64,9 +68,11 @@ $radius: 5px;
     }
     #Home {
       font-weight: 800;
+      font-size: $content;
     }
     #Mode {
       font-weight: 600;
+      font-size: $content;
     }
   }
 }
@@ -75,8 +81,10 @@ $radius: 5px;
 .header {
   width: 100%;
   height: fit-content;
-  padding: 0px 20px;
-  font-size: 14px;
+  padding: 0px $pdCorners;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 
   .searchbox {
     width: 100%;
@@ -86,69 +94,75 @@ $radius: 5px;
     justify-content: space-between;
     border-radius: $radius;
     margin: 35px 0px;
+    font-size: $titles;
+    cursor: pointer;
 
     input {
       width: 87%;
       border: none;
       outline: none;
-    }
-  }
-}
-
-/* Dropdown --------------------------------> */
-.dropdown {
-  width: 60%;
-  position: relative;
-  font-weight: 600;
-  margin: 35px 0px;
-
-  &__btn {
-    width: 100%;
-    padding: 15px 20px;
-    margin-bottom: 5px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: $radius;
-  }
-
-  .arrow {
-    font-size: 11px;
-  }
-
-  &__content {
-    width: 100%;
-    padding: 10px 20px;
-    display: none;
-
-    border-radius: $radius;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    position: absolute;
-    z-index: 1;
-
-    button {
-      background: transparent;
-      border: none;
-      display: block;
-      width: 100%;
-      padding: 7px 0px;
-      text-align: left;
-      outline: none;
+      font-size: $content;
       cursor: pointer;
     }
   }
-}
-.dropdown:hover .dropdown__content {
-  display: block;
+  /* Dropdown --------------------------------> */
+  .dropdown {
+    width: 60%;
+    position: relative;
+    font-weight: 600;
+    padding: 15px 0px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &__btn {
+      width: 100%;
+      padding: 15px 20px;
+      margin-bottom: 5px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: $content;
+      font-weight: 600;
+
+      border: none;
+      border-radius: $radius;
+    }
+
+    .arrow {
+      font-size: 11px;
+    }
+
+    &__content {
+      width: 100%;
+      padding: 10px 20px;
+      display: none;
+
+      border-radius: $radius;
+
+      font-size: $content;
+      font-weight: 600;
+
+      position: absolute;
+      z-index: 1;
+
+      button {
+        background: transparent;
+        border: none;
+        display: block;
+        width: 100%;
+        padding: 7px 0px;
+        text-align: left;
+        outline: none;
+        cursor: pointer;
+        font-size: $content;
+      }
+    }
+  }
+  .dropdown:hover .dropdown__content {
+    display: block;
+  }
 }
 
 /* Countries --------------------------------> */
@@ -157,6 +171,7 @@ $radius: 5px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 0px 20px;
 
   .card {
     width: 70%;
@@ -176,6 +191,7 @@ $radius: 5px;
 
       h4 {
         padding: 10px 0px;
+        font-size: $titles;
       }
       &--item {
         display: flex;
@@ -183,11 +199,11 @@ $radius: 5px;
 
         :nth-child(1) {
           padding-right: 3px;
-          font-size: 14px;
+          font-size: $content;
           font-weight: 600;
         }
         :nth-child(2) {
-          font-size: 14px;
+          font-size: $content;
           font-weight: 300;
         }
       }
@@ -198,14 +214,16 @@ $radius: 5px;
 /* Detail -----------------------------------> */
 .detail {
   width: 100%;
-  padding: 20px;
+  padding: $pdCorners 0px;
 
   #back {
     margin-bottom: 30px;
     padding: 3px 20px;
     border-radius: 2px;
     border: none;
+    font-size: $content;
     font-weight: 300;
+    cursor: pointer;
 
     i {
       padding-right: 4px;
@@ -217,16 +235,16 @@ $radius: 5px;
       object-fit: contain;
       margin-bottom: 25px;
     }
-
+    &__name {
+      width: 100%;
+      font-weight: 800;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      font-size: $titles;
+    }
     &__desc {
       width: 100%;
       margin-bottom: 15px;
-
-      h3 {
-        font-weight: 800;
-        margin-bottom: 25px;
-        letter-spacing: 1px;
-      }
 
       &--item {
         width: 100%;
@@ -234,12 +252,14 @@ $radius: 5px;
         display: flex;
 
         :nth-child(1) {
+          width: fit-content !important;
           padding-right: 3px;
-          font-size: 14px;
+          font-size: $content;
           font-weight: 600;
         }
         :nth-child(2) {
-          font-size: 14px;
+          width: fit-content !important;
+          font-size: $content;
           font-weight: 300;
         }
       }
@@ -248,16 +268,17 @@ $radius: 5px;
     &__borders {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: wrap;
 
       h5 {
         width: 100%;
         margin-bottom: 10px;
-        font-size: 14px;
+        font-size: $content;
         font-weight: 600;
       }
       button {
+        max-width: fit-content;
         cursor: pointer;
         border: none;
         outline: none;
@@ -265,6 +286,7 @@ $radius: 5px;
         padding: 2px 20px;
         margin: 5px 5px 5px 0px;
         font-weight: 300;
+        font-size: $content;
       }
     }
   }
