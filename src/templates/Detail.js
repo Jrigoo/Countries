@@ -16,7 +16,7 @@ const Detail = async (query) => {
     Flag,
   } = await getDetailData(query);
 
-  const Borders = "";
+  let Borders = "";
   if (BorderCountries) {
     Borders = `
     <h5>Border Countries:</h5>

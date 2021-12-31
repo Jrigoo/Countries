@@ -1,5 +1,3 @@
-import { getAllData } from "../utils/getAllData";
-
 const filterCountries = (data, query) => {
   if (query.region) {
     return data.filter((country) =>
@@ -13,33 +11,31 @@ const filterCountries = (data, query) => {
   }
 };
 
-//to HTML
 const displayCountries = (countries) => {
-  let html = countries
+  return countries
     .map(({ Name, Population, Region, Capital, Flag }) => {
       return `
-      <div class="card" id="${Name}">
-        <img src="${Flag}" alt="${Name} flag" class="card__img"/>
-        <div class="card__content">
-          <h4>${Name}</h4>
-          <div class="card__content--item">
-            <h5>Population:</h5>
-            <h5>${Population}</h5>
-          </div>
-          <div class="card__content--item">
-            <h5>Region:</h5>
-            <h5>${Region}</h5>
-          </div>
-          <div class="card__content--item">
-            <h5>Capital:</h5>
-            <h5>${Capital}</h5>
-          </div>
+    <div class="card" id="${Name}">
+      <img src="${Flag}" alt="${Name} flag" class="card__img"/>
+      <div class="card__content">
+        <h4>${Name}</h4>
+        <div class="card__content--item">
+          <h5>Population:</h5>
+          <h5>${Population}</h5>
+        </div>
+        <div class="card__content--item">
+          <h5>Region:</h5>
+          <h5>${Region}</h5>
+        </div>
+        <div class="card__content--item">
+          <h5>Capital:</h5>
+          <h5>${Capital}</h5>
         </div>
       </div>
-    `;
+    </div>
+  `;
     })
     .join(" ");
-  return html;
 };
 
 export { displayCountries, filterCountries };
