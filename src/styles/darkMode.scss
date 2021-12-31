@@ -1,0 +1,51 @@
+@import "global";
+
+$DarkBlue: hsl(209, 23%, 22%); /* (Dark Mode Elements) */
+$VeryDarkBlue: hsl(207, 26%, 17%); /* (Dark Mode Background) */
+$LightShadow: hsl(208, 23%, 16%);
+
+.darkMode {
+  background-color: $VeryDarkBlue;
+  .nav {
+    background-color: $DarkBlue;
+    box-shadow: 0.1px 0.1px 5px 0.5px $LightShadow;
+    #Home,
+    #Mode {
+      color: $White;
+    }
+  }
+  .header {
+    color: $White;
+    .searchbox {
+      background-color: $DarkBlue;
+      color: $White;
+      font-weight: 600;
+      box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+
+      input {
+        background-color: $DarkBlue;
+        color: $White;
+      }
+      ::placeholder {
+        color: $White;
+      }
+    }
+  }
+  .dropdown {
+    color: $White;
+    &__btn,
+    &__content {
+      background-color: $DarkBlue;
+      box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+    }
+    button {
+      color: $White;
+    }
+  }
+
+  .card {
+    color: $White;
+    background-color: $DarkBlue;
+    box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+  }
+}

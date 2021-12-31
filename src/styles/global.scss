@@ -1,0 +1,220 @@
+/* 
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+### Body Copy
+
+- Homepage Items: 14px
+- Detail Page: 16px 
+
+### Fonts
+
+- Family: [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans)
+- Weights: 300, 600, 800
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+/* @import "lightMode";
+@import "darkMode"; */
+
+$White: hsl(0, 0%, 100%); /* (Dark Mode Text & Light Mode Elements) */
+$radius: 5px;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* NAV --------------------------------> */
+.nav {
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+  font-size: 14px;
+
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+    li {
+      list-style: none;
+      padding: 0px 10px;
+    }
+
+    button {
+      outline: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    #Home {
+      font-weight: 800;
+    }
+    #Mode {
+      font-weight: 600;
+    }
+  }
+}
+
+/* Header --------------------------------> */
+.header {
+  width: 100%;
+  height: fit-content;
+  padding: 0px 20px;
+  font-size: 14px;
+
+  .searchbox {
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: $radius;
+    margin: 35px 0px;
+
+    input {
+      width: 87%;
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+/* Dropdown --------------------------------> */
+.dropdown {
+  width: 60%;
+  position: relative;
+  font-weight: 600;
+  margin: 35px 0px;
+
+  &__btn {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: $radius;
+  }
+
+  .arrow {
+    font-size: 11px;
+  }
+
+  &__content {
+    width: 100%;
+    padding: 10px 20px;
+    display: none;
+
+    border-radius: $radius;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    position: absolute;
+    z-index: 1;
+
+    button {
+      background: transparent;
+      border: none;
+      display: block;
+      width: 100%;
+      padding: 7px 0px;
+      text-align: left;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
+.dropdown:hover .dropdown__content {
+  display: block;
+}
+
+/* Countries --------------------------------> */
+#countries {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .card {
+    width: 70%;
+    margin-bottom: 40px;
+    border-radius: $radius;
+    cursor: pointer;
+
+    &__img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: $radius $radius 0px 0px;
+    }
+
+    &__content {
+      width: 100%;
+      padding: 15px 15px 30px 15px;
+
+      h4 {
+        padding: 10px 0px;
+      }
+      &--item {
+        display: flex;
+        padding-bottom: 5px;
+
+        :nth-child(1) {
+          padding-right: 3px;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        :nth-child(2) {
+          font-size: 14px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}
+
+/* Detail -----------------------------------> */
+.detail {
+  width: 100%;
+  padding: 20px;
+
+  #back {
+    margin-bottom: 30px;
+    padding: 2px 20px;
+    border-radius: 2px;
+    border: none;
+
+    i {
+      padding-right: 4px;
+    }
+  }
+  .country {
+    img {
+      width: 100%;
+      object-fit: contain;
+      margin-bottom: 25px;
+    }
+  }
+}
