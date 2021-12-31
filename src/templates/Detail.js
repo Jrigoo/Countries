@@ -30,6 +30,7 @@ const Detail = async (query) => {
   }
 
   return `
+     <section id="detail" class="detail">
       <button id="back"><i class="fas fa-arrow-left"></i> Back</button>
       <div class="country">
         <img src="${Flag}" alt="${Name} Flag" />
@@ -71,6 +72,7 @@ const Detail = async (query) => {
             ${Borders}
           </div>
       </div>
+     </section>
     `;
 };
 

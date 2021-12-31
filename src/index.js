@@ -1,5 +1,4 @@
 import { displayCountries, filterCountries } from "./templates/Countries";
-import { Header } from "./templates/Header";
 import { Detail } from "./templates/Detail";
 
 import { getAllData } from "./utils/getAllData";
@@ -8,65 +7,33 @@ import "./styles/global.scss";
 import "./styles/lightMode.scss";
 import "./styles/darkMode.scss";
 
+const app = document.getElementById("app");
+const mode = document.getElementById("Mode");
+
 class Initialize {
-  constructor(allCountries) {
-    this.app = document.getElementById("app"); //main div with application
-    this.allCountries = allCountries;
-
-    this.app.innerHTML +=
-      Header() +
-      `<div id="countries">${displayCountries(this.allCountries)}</div>`; //add main components
-
-    this.darkMode(); //Initialize darkMode button and listener once
-
-    //Initialize search & filter & card elements and it's listeners
-    this.declare();
-    this.listeners();
-  }
-  darkMode() {
-    this.mode = document.getElementById("Mode");
-    this.mode.addEventListener("click", () => {
-      this.app.classList.toggle("darkMode");
-      this.app.classList.toggle("lightMode");
-    });
-  }
-  declare() {
-    this.countries = document.getElementById("countries");
-    this.search = document.getElementById("search");
-    this.regionBtns = document.querySelectorAll(".region-btn");
-    this.cards = document.querySelectorAll(".card");
-    this.header = document.getElementById("header");
-  }
-  listeners() {
-    this.cardListener();
+  constructor(countries) {
+    this.app = app;
+    this.countries = countries;
+    this.app.innerHTML = displayCountries(this.countries);
+    this.declarations();
     this.searchListener();
+    this.cardListener();
     this.regionListener();
   }
-  cardListener() {
-    //cards
-    this.cards.forEach((card) => {
-      card.addEventListener("click", async () => {
-        await this.cardSelection(card.id);
-
-        this.backBtn.addEventListener("click", () => {
-          this.reset();
-          this.declare();
-        });
-      });
-    });
+  declarations() {
+    this.header = document.getElementById("header");
+    this.search = document.getElementById("search");
+    this.cards = document.querySelectorAll(".card");
+    this.regionBtns = document.querySelectorAll(".region-btn");
   }
   searchListener() {
-    //searchbox
     this.search.addEventListener("input", (e) => {
-      if (!e.target.value) {
-        return this.allCountries;
-      } else {
-        this.countries.innerHTML = displayCountries(
-          filterCountries(this.allCountries, { search: e.target.value })
+      if (e.target.value) {
+        this.app.innerHTML = displayCountries(
+          filterCountries(this.countries, { search: e.target.value })
         );
       }
-
-      this.declare();
+      this.declarations();
       this.cardListener();
       this.regionListener();
     });
@@ -74,38 +41,47 @@ class Initialize {
   regionListener() {
     this.regionBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        this.countries.innerHTML = displayCountries(
-          filterCountries(this.allCountries, { region: btn.innerText })
+        this.app.innerHTML = displayCountries(
+          filterCountries(this.countries, { region: btn.innerHTML })
         );
-
-        this.declare();
+        this.declarations();
         this.cardListener();
         this.searchListener();
       });
     });
   }
-  async cardSelection(id) {
-    this.countries.remove();
-    this.header.remove();
-
-    this.section = document.createElement("section");
-    this.section.className = "detail";
-    this.section.innerHTML = await Detail(id);
-
-    this.app.append(this.section);
-    this.backBtn = document.getElementById("back");
+  cardListener() {
+    this.cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        Detail(card.id).then((data) => {
+          this.app.innerHTML = data;
+          this.header.style.display = "none";
+          this.backBtnListener();
+        });
+        this.search.value = "";
+      });
+    });
+  }
+  backBtnListener() {
+    document.getElementById("back").addEventListener("click", () => {
+      header.style.display = "block";
+      this.app.innerHTML = displayCountries(this.countries);
+      this.reset();
+    });
   }
   reset() {
-    this.section.remove();
-    this.app.append(this.header);
-    this.app.append(this.countries);
-
-    this.declare();
-    this.listeners();
+    this.declarations();
+    this.searchListener();
+    this.cardListener();
+    this.regionListener();
   }
 }
 
 window.onload = async () => {
-  let countries = await getAllData();
-  new Initialize(countries);
+  new Initialize(await getAllData());
 };
+
+mode.addEventListener("click", () => {
+  document.getElementById("main").classList.toggle("darkMode");
+  document.getElementById("main").classList.toggle("lightMode");
+});
