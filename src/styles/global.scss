@@ -95,14 +95,12 @@ $pdCorners: 20px;
     border-radius: $radius;
     margin: 35px 0px;
     font-size: $titles;
-    cursor: pointer;
 
     input {
       width: 87%;
       border: none;
       outline: none;
       font-size: $content;
-      cursor: pointer;
     }
   }
   /* Dropdown --------------------------------> */

@@ -4,8 +4,8 @@
   "description": "![Design preview for the REST Countries API with color theme switcher coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve"
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack serve --config webpack.config.dev.js"
   },
   "keywords": [],
   "author": "",
