@@ -14,9 +14,9 @@ const getAllData = async () => {
   const countries = data.map(({ name, population, region, capital, flags }) => {
     let pais = {
       Name: name.common,
-      Population: population,
+      Population: population || "-",
       Region: region,
-      Capital: capital,
+      Capital: capital || "-",
       Flag: flags.svg,
     };
     return pais;

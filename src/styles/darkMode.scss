@@ -48,4 +48,21 @@ $LightShadow: hsl(208, 23%, 16%);
     background-color: $DarkBlue;
     box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
   }
+  .detail {
+    color: $White;
+    #back {
+      color: $White;
+      background-color: $DarkBlue;
+      box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+    }
+    .country {
+      &__borders {
+        button {
+          color: $White;
+          background-color: $DarkBlue;
+          box-shadow: 0.1px 0.1px 5px 0px $LightShadow;
+        }
+      }
+    }
+  }
 }

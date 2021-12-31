@@ -7,22 +7,29 @@ import "./styles/global.scss";
 import "./styles/lightMode.scss";
 import "./styles/darkMode.scss";
 
-const app = document.getElementById("app");
-const mode = document.getElementById("Mode");
-
 class Initialize {
   constructor(countries) {
-    this.app = app;
+    this.main = document.getElementById("main");
+    this.app = document.getElementById("app");
     this.countries = countries;
     this.app.innerHTML = displayCountries(this.countries);
 
+    this.darkModeBtn = document.getElementById("Mode");
     this.header = document.getElementById("header");
+
     this.listeners();
   }
   listeners() {
     this.searchListener();
     this.cardListener();
     this.regionListener();
+    this.darkModeListener();
+  }
+  darkModeListener() {
+    this.darkModeBtn.addEventListener("click", () => {
+      document.getElementById("main").classList.toggle("darkMode");
+      document.getElementById("main").classList.toggle("lightMode");
+    });
   }
   searchListener() {
     this.search = document.getElementById("search");
@@ -32,7 +39,6 @@ class Initialize {
           filterCountries(this.countries, { search: e.target.value })
         );
       }
-
       this.cardListener();
     });
   }
@@ -43,8 +49,6 @@ class Initialize {
         this.app.innerHTML = displayCountries(
           filterCountries(this.countries, { region: btn.innerHTML })
         );
-
-        this.cardListener();
       });
     });
   }
@@ -86,8 +90,3 @@ class Initialize {
 window.onload = async () => {
   new Initialize(await getAllData());
 };
-
-mode.addEventListener("click", () => {
-  document.getElementById("main").classList.toggle("darkMode");
-  document.getElementById("main").classList.toggle("lightMode");
-});
